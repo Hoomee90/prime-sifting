@@ -1,3 +1,5 @@
+using System;
+
 namespace PrimeSifting.Models
 {
 	public class Sifter
@@ -7,6 +9,12 @@ namespace PrimeSifting.Models
 		public Sifter(int maxNum)
 		{
 			RangeMax = maxNum;
+		}
+		
+		#nullable enable
+		public int[]? SiftPrimes()
+		{
+			return null;
 		}
 	}
 }

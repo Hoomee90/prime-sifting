@@ -1,4 +1,3 @@
-using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrimeSifting.Models;
 
@@ -31,6 +30,14 @@ namespace PrimeSifting.Tests
 			int newNum = 20;
 			newSifter.RangeMax = newNum;
 			Assert.AreEqual(newNum, newSifter.RangeMax);
+		}
+		
+		[TestMethod]
+		public void SiftPrimes_DeterminesWhenNoPrimes_IntArray()
+		{
+			Sifter newSifter = new(1);
+			int[] result = newSifter.SiftPrimes();
+			Assert.IsNull(result);
 		}
 	}
 }
