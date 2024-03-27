@@ -33,11 +33,28 @@ namespace PrimeSifting.Tests
 		}
 		
 		[TestMethod]
-		public void SiftPrimes_DeterminesWhenNoPrimes_IntArray()
+		public void SiftPrimes_DeterminesWhenNoPrimes_Null()
 		{
 			Sifter newSifter = new(1);
 			int[] result = newSifter.SiftPrimes();
 			Assert.IsNull(result);
+		}
+		
+		[TestMethod]
+		public void SiftPrimes_DeterminesFirstPrime_IntArray()
+		{
+			Sifter newSifter = new(3);
+			int[] result = newSifter.SiftPrimes();
+			CollectionAssert.AreEqual(result, new[] {2});
+		}
+		
+		// TODO: Build this
+		[TestMethod]
+		public void SiftPrimes_DeterminesAllPrimes_IntArray()
+		{
+			Sifter newSifter = new(10);
+			int[] result = newSifter.SiftPrimes();
+			CollectionAssert.AreEqual(result, new[] {2, 3, 5, 7});
 		}
 	}
 }

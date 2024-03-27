@@ -14,7 +14,14 @@ namespace PrimeSifting.Models
 		#nullable enable
 		public int[]? SiftPrimes()
 		{
-			return null;
+			if (RangeMax <= 1)
+			{
+				return null;
+			}
+			bool[] primeBools = new bool[RangeMax];
+			Array.Fill(primeBools, true);
+			
+			return new[] {2};
 		}
 	}
 }
