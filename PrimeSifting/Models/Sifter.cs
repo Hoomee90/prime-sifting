@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PrimeSifting.Models
 {
@@ -11,12 +13,11 @@ namespace PrimeSifting.Models
 			RangeMax = maxNum;
 		}
 		
-		#nullable enable
-		public bool[]? FindPrimes()
+		public bool[] FindPrimes()
 		{
-			if (RangeMax <= 1)
+			if (RangeMax <= 0)
 			{
-				return null;
+				return new[] {true};
 			}
 			bool[] primeBools = new bool[RangeMax + 1];
 			Array.Fill(primeBools, true);
@@ -31,8 +32,23 @@ namespace PrimeSifting.Models
 					}
 				}
 			}
-			
 			return primeBools;
+		}
+		
+		public int[] SiftPrimes()
+		{
+			bool[] primeBools = FindPrimes();
+			List<int> primes = new();
+			
+			for (int i = 2; i < primeBools.Length; i++)
+			{
+				if (primeBools[i])
+				{
+					primes.Add(i);
+				}
+			}
+			
+			return primes.ToArray();
 		}
 	}
 }
