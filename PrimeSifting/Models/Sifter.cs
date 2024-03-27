@@ -12,16 +12,27 @@ namespace PrimeSifting.Models
 		}
 		
 		#nullable enable
-		public int[]? SiftPrimes()
+		public bool[]? FindPrimes()
 		{
 			if (RangeMax <= 1)
 			{
 				return null;
 			}
-			bool[] primeBools = new bool[RangeMax];
+			bool[] primeBools = new bool[RangeMax + 1];
 			Array.Fill(primeBools, true);
 			
-			return new[] {2};
+			for (int i = 2; i <= Math.Sqrt(RangeMax); i++)
+			{
+				if (primeBools[i])
+				{
+					for (int j = i * i; j <= RangeMax; j += i)
+					{
+						primeBools[j] = false;
+					}
+				}
+			}
+			
+			return primeBools;
 		}
 	}
 }
