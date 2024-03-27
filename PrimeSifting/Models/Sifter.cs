@@ -35,7 +35,7 @@ namespace PrimeSifting.Models
 			return primeBools;
 		}
 		
-		public int[] SiftPrimes()
+		public List<int> SiftPrimes()
 		{
 			bool[] primeBools = FindPrimes();
 			List<int> primes = new();
@@ -47,8 +47,7 @@ namespace PrimeSifting.Models
 					primes.Add(i);
 				}
 			}
-			
-			return primes.ToArray();
+			return primes;
 		}
 	}
 }
