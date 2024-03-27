@@ -1,5 +1,5 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using PrimeSifting.Models;
 
 namespace PrimeSifting
@@ -17,7 +17,7 @@ namespace PrimeSifting
 		
 		static void MakeSifter()
 		{
-			Console.WriteLine("Please enter a number:");
+			Console.WriteLine("Please enter the number you'd like to calculate:");
 			string input = Console.ReadLine();
 			if (int.TryParse(input, out int number))
 			{
@@ -27,6 +27,17 @@ namespace PrimeSifting
 				if (response == "y")
 				{
 					DisplaySifter(sifter);
+					Console.WriteLine("What fun!");
+					Console.WriteLine("Want to go again? Enter 'y' for yes");
+					string response2 = Console.ReadLine().ToLower();
+					if (response2 == "y")
+					{
+						MakeSifter();
+					}
+					else
+					{
+						Console.WriteLine("Goodbye");
+					}
 				}
 				else
 				{
@@ -41,17 +52,12 @@ namespace PrimeSifting
 			}
 		}
 		
-		// static void DisplaySifter(Sifter sifter)
-		// {
-		// 	Console.WriteLine("-----------------------------------------");
-		// 	Console.WriteLine("The prime values smaller than {0} are:", sifter.RangeMax);
-		// 	int[] primeList = sifter.SiftPrimes().ToArray();
-			
-		// 	for (int i = 0; i < primeList.Length; i += (primeList.Length / 50))
-		// 	{
-		// 		Console.WriteLine("{0}", primeList.Length);
-		// 		//string.Join("\n", primeList.Skip(i).Take(i - (primeList.Length / 50)))
-		// 	}
-		// }
+		static void DisplaySifter(Sifter sifter)
+		{
+			Console.WriteLine("-----------------------------------------");
+			Console.WriteLine("The prime values smaller than {0} are:", sifter.RangeMax);
+			List<int> primeList = sifter.SiftPrimes();
+			Console.WriteLine("{0}", string.Join("\n", primeList));
+		}
 	}
 }
