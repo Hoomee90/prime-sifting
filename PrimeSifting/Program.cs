@@ -24,7 +24,7 @@ namespace PrimeSifting
 				Sifter sifter = new(number);
 				DisplaySifter(sifter);
 				
-				Console.WriteLine("That's all there is");
+				Console.WriteLine("You've reached the end");
 				Console.WriteLine("Want to do it again? Enter 'y' for yes");
 				string response = Console.ReadLine().ToLower();
 				if (response == "y")
@@ -49,7 +49,7 @@ namespace PrimeSifting
 			{
 				Console.WriteLine("-----------------------------------------");
 				Console.WriteLine("The prime values smaller than {0} are:", sifter.RangeMax);
-				Console.WriteLine("{0}", string.Join("\n", primeList));
+				Console.WriteLine("{0}", string.Join(sifter.RangeMax < 5000 ? "\n" : ", ", primeList));
 			}
 			else
 			{
