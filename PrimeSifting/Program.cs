@@ -10,7 +10,7 @@ namespace PrimeSifting
 		{
 			Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
 			Console.WriteLine("Welcome to PrimeShifting");
-			Console.WriteLine("We'll tell you all the prime numbers smaller than a number of your choice");
+			Console.WriteLine("We'll tell you all the prime numbers equal to or smaller than a number of your choice");
 			Console.WriteLine("*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
 			MakeSifter();
 		}
@@ -22,42 +22,39 @@ namespace PrimeSifting
 			if (int.TryParse(input, out int number))
 			{
 				Sifter sifter = new(number);
-				Console.WriteLine("Ready to see the primes? Enter 'y' for yes");
+				DisplaySifter(sifter);
+				
+				Console.WriteLine("That's all there is");
+				Console.WriteLine("Want to do it again? Enter 'y' for yes");
 				string response = Console.ReadLine().ToLower();
 				if (response == "y")
 				{
-					DisplaySifter(sifter);
-					Console.WriteLine("What fun!");
-					Console.WriteLine("Want to go again? Enter 'y' for yes");
-					string response2 = Console.ReadLine().ToLower();
-					if (response2 == "y")
-					{
-						MakeSifter();
-					}
-					else
-					{
-						Console.WriteLine("Goodbye");
-					}
+					MakeSifter();
 				}
 				else
 				{
-					Console.WriteLine("That's ok. Not everybody is");
-					Console.WriteLine("This is goodbye then");
+					Console.WriteLine("Goodbye");
 				}
-			}
-			else
-			{
-				Console.WriteLine("Not a real number. Try again");
-				MakeSifter();
 			}
 		}
 		
 		static void DisplaySifter(Sifter sifter)
 		{
-			Console.WriteLine("-----------------------------------------");
-			Console.WriteLine("The prime values smaller than {0} are:", sifter.RangeMax);
+			Console.WriteLine("Calculating...");
 			List<int> primeList = sifter.SiftPrimes();
-			Console.WriteLine("{0}", string.Join("\n", primeList));
+			Console.WriteLine("All done!");
+			Console.WriteLine("Ready to see the primes? Enter 'y' for yes");
+			string response = Console.ReadLine().ToLower();
+			if (response == "y")
+			{
+				Console.WriteLine("-----------------------------------------");
+				Console.WriteLine("The prime values smaller than {0} are:", sifter.RangeMax);
+				Console.WriteLine("{0}", string.Join("\n", primeList));
+			}
+			else
+			{
+				Console.WriteLine("That's ok. Not everybody is");
+			}
 		}
 	}
 }
