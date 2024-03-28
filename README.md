@@ -1,8 +1,8 @@
-# Title
+# Prime Sifting
 
 #### By **Samantha Callie**
 
-#### Subtitle
+#### Find all the primes you could ever want
 
 ## Technologies Used
 
@@ -11,7 +11,7 @@
 
 ## Description
 
-Description
+The program allows users to input a number, and finds all primes smaller than or equal to that number.
 
 ## Setup/Installation Requirements
 
@@ -24,7 +24,7 @@ Description
 
 ## Known Bugs
 
-* There are no known bugs at this time
+* Numbers above 10,000,000 may have very long load times, or cause the program to crash.
 
 ## License
 
